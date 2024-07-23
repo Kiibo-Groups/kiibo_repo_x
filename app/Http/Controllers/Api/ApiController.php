@@ -63,7 +63,7 @@ class ApiController extends Controller
     public function addData(Request $request) 
     {
         return response()->json([
-            'data' =>  $request->getAll()
+            'data' =>  $request->all()
         ]);
     }
 
