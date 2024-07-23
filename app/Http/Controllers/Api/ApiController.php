@@ -64,36 +64,19 @@ class ApiController extends Controller
     {
         $params = [
             'pipeline' => 'ent-search-generic-ingestion',
-            'body' => [
-                [
-                    'index' => [
-                        '_index' => 'nl1',
-                        '_id' => '1',
-                    ],
-                ],
-                [
-                    'name'  => "adrian quezada",
-                    'cv'    => "QZFGAD92061108H000",
-                    'curp'  => "QUFA920611HCHZGD05"
-                ],
-                [
-                    'index' => [
-                        '_index' => 'nl1',
-                        '_id' => '2',
-                    ],
-                ],
-                [
-                    'name'  => "morayma vargas bencomo",
-                    'cv'    => "QZFGAD92061108H000",
-                    'curp'  => "QUFA920611HCHZGD05"
-                ]
-            ],
+            'body' => $request->all()
         ];
 
-        return response()->json([
+        $response = $client->bulk($params); 
+        
+		return response()->json([
+            'StatusCode' => $response->getStatusCode(),
+            'body' => (string) $response->getBody(),
+
             'data' => $request->all(),
             'params' =>  $params 
         ]);
+
     }
 
 }
