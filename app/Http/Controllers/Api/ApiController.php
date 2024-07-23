@@ -91,7 +91,8 @@ class ApiController extends Controller
         ];
 
         return response()->json([
-            'data' =>  $params //$request->all()
+            'data' => $request->all(),
+            'params' =>  $params 
         ]);
     }
 
