@@ -62,6 +62,11 @@ class ApiController extends Controller
 
     public function addData(Request $request) 
     {
+        $client = ClientBuilder::create()
+        ->setHosts(['https://a62f6b59830b4256961df3ea5d7fbe1f.us-central1.gcp.cloud.es.io:443'])
+        ->setApiKey('OWgxdTNwQUI0dmJMNUlXQktUMVI6dHJvSzBpUUlSMHVYUmstTkRxZmM4UQ==')
+        ->build();
+        
         $params = [
             'pipeline' => 'ent-search-generic-ingestion',
             'body' => $request->all()
