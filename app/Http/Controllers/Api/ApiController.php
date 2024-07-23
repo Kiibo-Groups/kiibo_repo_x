@@ -62,8 +62,36 @@ class ApiController extends Controller
 
     public function addData(Request $request) 
     {
+        $params = [
+            'pipeline' => 'ent-search-generic-ingestion',
+            'body' => [
+                [
+                    'index' => [
+                        '_index' => 'nl1',
+                        '_id' => '1',
+                    ],
+                ],
+                [
+                    'name'  => "adrian quezada",
+                    'cv'    => "QZFGAD92061108H000",
+                    'curp'  => "QUFA920611HCHZGD05"
+                ],
+                [
+                    'index' => [
+                        '_index' => 'nl1',
+                        '_id' => '2',
+                    ],
+                ],
+                [
+                    'name'  => "morayma vargas bencomo",
+                    'cv'    => "QZFGAD92061108H000",
+                    'curp'  => "QUFA920611HCHZGD05"
+                ]
+            ],
+        ];
+
         return response()->json([
-            'data' =>  $request->all()
+            'data' =>  $params //$request->all()
         ]);
     }
 
